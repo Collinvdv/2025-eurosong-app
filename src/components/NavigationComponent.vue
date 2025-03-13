@@ -21,6 +21,7 @@
                 items: [
                     "home",
                     "artists",
+                    "songs",
                     "ranking",
                     "voting"
                 ]

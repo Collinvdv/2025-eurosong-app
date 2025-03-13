@@ -7,6 +7,7 @@
      <PageArtists v-if="activePage == 'artists'"/>
      <PageHome v-if="activePage == 'home'"/>
      <PageRanking v-if="activePage == 'ranking'"/>
+     <PageSongs v-if="activePage == 'songs'"/>
      <PageVoting v-if="activePage == 'voting'"/>
   </div>
 </template>
@@ -19,6 +20,7 @@
   import PageArtists from './pages/PageArtists.vue';
   import PageHome from './pages/PageHome.vue';
   import PageRanking from './pages/PageRanking.vue';
+  import PageSongs from './pages/PageSongs.vue';
   import PageVoting from './pages/PageVoting.vue';
 
   // Export
@@ -34,6 +36,7 @@
       PageArtists,
       PageHome,
       PageRanking,
+      PageSongs,
       PageVoting
     },
     methods: {
