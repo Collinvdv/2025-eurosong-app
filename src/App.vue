@@ -28,7 +28,7 @@
     name: 'App',
     data() {
       return {
-        activePage: "artists"
+        activePage: "voting"
       }
     },
     components: {
