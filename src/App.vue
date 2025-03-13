@@ -1,19 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- Navigation -->
+    <NavigationComponent @setActivePage="setActivePage"/>
+
+    <!-- Pages -->
+     <PageArtists v-if="activePage == 'artists'"/>
+     <PageHome v-if="activePage == 'home'"/>
+     <PageRanking v-if="activePage == 'ranking'"/>
+     <PageVoting v-if="activePage == 'voting'"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  // Components
+  import NavigationComponent from './components/NavigationComponent.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  // Pages
+  import PageArtists from './pages/PageArtists.vue';
+  import PageHome from './pages/PageHome.vue';
+  import PageRanking from './pages/PageRanking.vue';
+  import PageVoting from './pages/PageVoting.vue';
+
+  // Export
+  export default {
+    name: 'App',
+    data() {
+      return {
+        activePage: "artists"
+      }
+    },
+    components: {
+      NavigationComponent,
+      PageArtists,
+      PageHome,
+      PageRanking,
+      PageVoting
+    },
+    methods: {
+      setActivePage(page) {
+        this.activePage = page;
+      }
+    }
   }
-}
 </script>
 
 <style>
