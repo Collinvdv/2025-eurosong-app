@@ -23,6 +23,17 @@
                 </td>
             </tr>
         </table>
+
+        <hr>
+
+        <label for="input_new_name">
+            New name
+        </label>
+        <input id="input_new_name" type="text" v-model="newArtist">
+
+        <button @click="addArtists()">
+            Add new artists
+        </button>
     </div>
 </template>
 
@@ -30,7 +41,6 @@
     export default {
         name: "PageArtists",
         mounted() {
-            console.log("get some data from the API");
             fetch("http://localhost:3000/artists", {
                 method: "GET"
             })
@@ -43,7 +53,28 @@
         },
         data() {
             return {
-                artists: []
+                artists: [],
+                newArtist: ""
+            }
+        },
+        methods: {
+            addArtists() {
+                fetch("http://localhost:3000/artists", {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: this.newArtist
+                    })
+                })
+                    .then((data) => {
+                        return data.json();
+                    })
+                    .then((_newArtist) => {
+                        console.log(_newArtist);
+                    })
             }
         }
     }
