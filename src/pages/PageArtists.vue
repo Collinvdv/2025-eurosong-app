@@ -41,15 +41,7 @@
     export default {
         name: "PageArtists",
         mounted() {
-            fetch("http://localhost:3000/artists", {
-                method: "GET"
-            })
-                .then((data) => {
-                    return data.json();
-                })
-                .then((artistsApi) => {
-                    this.artists = artistsApi;
-                })
+            this.fetchArtists();
         },
         data() {
             return {
@@ -58,6 +50,17 @@
             }
         },
         methods: {
+            fetchArtists() {
+                fetch("http://localhost:3000/artists", {
+                    method: "GET"
+                })
+                    .then((data) => {
+                        return data.json();
+                    })
+                    .then((artistsApi) => {
+                        this.artists = artistsApi;
+                    })
+            },
             addArtists() {
                 fetch("http://localhost:3000/artists", {
                     method: "POST",
@@ -72,8 +75,8 @@
                     .then((data) => {
                         return data.json();
                     })
-                    .then((_newArtist) => {
-                        console.log(_newArtist);
+                    .then(() => {
+                        this.fetchArtists();
                     })
             }
         }
