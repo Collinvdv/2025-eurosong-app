@@ -8,7 +8,7 @@
      <PageHome v-if="activePage == 'home'"/>
      <PageRanking v-if="activePage == 'ranking'"/>
      <PageSongs v-if="activePage == 'songs'"/>
-     <PageVoting v-if="activePage == 'voting'"/>
+     <PageVoting v-if="activePage == 'voting'" @setActivePage="setActivePage"/>
   </div>
 </template>
 
@@ -28,7 +28,7 @@
     name: 'App',
     data() {
       return {
-        activePage: "voting"
+        activePage: "ranking"
       }
     },
     components: {
